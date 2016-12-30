@@ -1,5 +1,6 @@
-var express = require('express')
-var bodyParser = require('body-parser')
+var express = require('express');
+var bodyParser = require('body-parser');
+var request = require('request');
 
 
 var app = express();
@@ -21,4 +22,19 @@ app.get('/', function(req, res) {
 	res.send("Success");
 });
 
-app.listen(3000);
+
+app.get('/search' , function(req, res) {
+	var s =  req.query.s;
+	request('http://www.omdbapi.com/?s=' + s + '', function(error, response, body) {
+		if (!error && response.statusCode == 200) {
+    		console.log(body);
+    		res.send(body);
+ 		}
+	});
+});
+
+
+
+app.listen(3000, function() {
+	console.log('listening on 3000');
+});
