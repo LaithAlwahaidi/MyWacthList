@@ -1,16 +1,19 @@
 import React from "react";
 import { Link } from "react-router";
 import Select from 'react-select';
-// import 'react-select/dist/react-select.css';
+import Info from "./Info";
 
 
 export default class Home extends React.Component {
 
 	constructor() {
 		super();
+		this.search = ""
+		this.searchId = ""
 
 		this.state = {
-			search: "-----------------------------------------"
+			search: "",
+			id: ""
 		}
 	}
 
@@ -34,16 +37,30 @@ export default class Home extends React.Component {
 		)
     }
 
+    getOption(input) {
+    	fetch('http://localhost:3000/search?id=' + input)
+    		.then((response) => response.json())
+    		.then((responseJson) => {
+
+    		})
+    }
+
 
 	changeState(value) {
-		this.setState({search: value})
+		this.setState({search: value.label, id: value.value})
+		console.log(this.state, this.state.search)
+		// this.forceUpdate()
+	}
+
+	showInfo() {
+		this.forceUpdate()
 	}
 
 	render() {
 		return (
 			<div>
 				<div class="row">
-					<div class="col-md-1">
+					<div class="col-sm-11">
 						<Select.Async
 						    name="form-field-name"
 						    value={this.state.search}
@@ -51,12 +68,13 @@ export default class Home extends React.Component {
 						    loadOptions={this.getOptions.bind(this)}
 						/>
 					</div>
-					<div class="col-md-1">
-						<button type="button" class="btn btn-default" aria-label="Left Align">
-							<span class="glyphicon glyphicon-menu-right" aria-hidden="true" />
+					<div class="col-sm-1">
+						<button type="button" class="btn btn-default" aria-label="Left Align" onClick={() => {this.showInfo()}}>
+							<span class="glyphicon glyphicon-menu-right" aria-hidden="false" /> 
 						</button>
 					</div>
 				</div>
+				<Info id={this.state.id} />
 			</div>
 		)
 	}

@@ -25,12 +25,23 @@ app.get('/', function(req, res) {
 
 app.get('/search' , function(req, res) {
 	var s =  req.query.s;
-	request('http://www.omdbapi.com/?s=' + s + '', function(error, response, body) {
-		if (!error && response.statusCode == 200) {
-    		console.log(body);
-    		res.send(body);
- 		}
-	});
+	var id = req.query.id;
+	if (s != undefined) {
+		request('http://www.omdbapi.com/?s=' + s + '', function(error, response, body) {
+			if (!error && response.statusCode == 200) {
+	    		console.log(body);
+	    		res.send(body);
+	 		}
+		});
+	}
+	else {
+		request('http://www.omdbapi.com/?i=' + id + '', function(error, response, body) {
+			if (!error && response.statusCode == 200) {
+	    		console.log(body);
+	    		res.send(body);
+	 		}
+		});
+	}
 });
 
 
