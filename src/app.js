@@ -26,7 +26,7 @@ app.get('/', function(req, res) {
 app.get('/search' , function(req, res) {
 	var s =  req.query.s;
 	var id = req.query.id;
-	if (s != undefined) {
+	if (s !== undefined) {
 		request('http://www.omdbapi.com/?s=' + s + '', function(error, response, body) {
 			if (!error && response.statusCode == 200) {
 	    		console.log(body);

@@ -26,7 +26,7 @@ export default class Info extends React.Component {
 	}
 
 
-	render() {
+	render(
 		return (
 			<div>
 				{this.props.id}
