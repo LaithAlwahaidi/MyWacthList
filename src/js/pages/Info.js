@@ -1,10 +1,11 @@
 import React from "react";
-import { Link } from "react-router";
-import Select from 'react-select';
+// import { Link } from "react-router";
+// import Select from 'react-select';
 // import 'react-select/dist/react-select.css';
 
 
 export default class Info extends React.Component {
+
 
 	constructor() {
 		super();
@@ -26,7 +27,7 @@ export default class Info extends React.Component {
 	}
 
 
-	render(
+	render() {
 		return (
 			<div>
 				{this.props.id}
@@ -34,3 +35,7 @@ export default class Info extends React.Component {
 		)
 	}
 }
+
+Info.propTypes = {
+	"id": React.PropTypes.string.isRequired
+};

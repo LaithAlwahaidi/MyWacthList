@@ -19,7 +19,7 @@ app.use(function (req, res, next) {
 });
 
 app.get('/', function(req, res) {
-	res.send("Success");
+	res.send("Success")
 });
 
 
@@ -28,18 +28,18 @@ app.get('/search' , function(req, res) {
 	var id = req.query.id;
 	if (s !== undefined) {
 		request('http://www.omdbapi.com/?s=' + s + '', function(error, response, body) {
-			if (!error && response.statusCode == 200) {
-	    		console.log(body);
-	    		res.send(body);
-	 		}
+            if (!error && response.statusCode == 200) {
+                console.log(body);
+                res.send(body);
+            }
 		});
 	}
 	else {
 		request('http://www.omdbapi.com/?i=' + id + '', function(error, response, body) {
 			if (!error && response.statusCode == 200) {
-	    		console.log(body);
-	    		res.send(body);
-	 		}
+                console.log(body);
+                res.send(body);
+            }
 		});
 	}
 });

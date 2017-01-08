@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router";
+// import { Link } from "react-router";
 import Navbar from "./Navbar";
 
 export default class Layout extends React.Component {
@@ -15,4 +15,8 @@ export default class Layout extends React.Component {
 			</div>
 		)
 	}
+}
+
+Layout.propTypes = {
+	"children": React.PropTypes.element
 }
