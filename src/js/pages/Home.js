@@ -18,7 +18,7 @@ export default class Home extends React.Component {
 	}
 
 	getOptions(input, callback) {
-	    
+
 	    fetch('http://localhost:3000/search?s=' + input)
 			.then((response) => response.json())
       		.then((responseJson) => {
@@ -70,7 +70,7 @@ export default class Home extends React.Component {
 					</div>
 					<div class="col-sm-1">
 						<button type="button" class="btn btn-default" aria-label="Left Align" onClick={() => {this.showInfo()}}>
-							<span class="glyphicon glyphicon-menu-right" aria-hidden="false" /> 
+							<span class="glyphicon glyphicon-menu-right" aria-hidden="false" />
 						</button>
 					</div>
 				</div>
@@ -79,4 +79,3 @@ export default class Home extends React.Component {
 		)
 	}
 }
-
