@@ -6,6 +6,9 @@ import React from "react";
 
 export default class Info extends React.Component {
 
+	static propTypes = {
+		"id" : React.PropTypes.string
+	};
 
 	constructor() {
 		super();
@@ -26,16 +29,12 @@ export default class Info extends React.Component {
 		}
 	}
 
-
 	render() {
 		return (
 			<div>
 				{this.props.id}
+				{this.props.name}
 			</div>
-		)
+		);
 	}
 }
-
-Info.propTypes = {
-	"id": React.PropTypes.string.isRequired
-};
